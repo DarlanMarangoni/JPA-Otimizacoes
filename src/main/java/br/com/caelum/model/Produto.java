@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
@@ -40,7 +41,8 @@ public class Produto {
 	private Loja loja;
 	
 	@ManyToMany
-	private List<Categoria> categorias = new ArrayList<>();
+	@JoinTable(name="PRODUTO_CATEGORIA")
+	private List<Categoria> categorias= new ArrayList<>();
 	
 	
 	public String getDescricao() {
@@ -50,14 +52,6 @@ public class Produto {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
-	//método auxiliar para associar categorias com o produto
-	//se funcionar apos ter definido o relacionamento entre produto e categoria
-//	public void adicionarCategorias(Categoria... categorias) {
-//		for (Categoria categoria : categorias) {
-//			this.categorias.add(categoria);
-//		}
-//	}
 
 	public String getLinkDaFoto() {
 		return linkDaFoto;
@@ -99,4 +93,17 @@ public class Produto {
 		return loja;
 	}
 
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+	
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+	
+	public void adicionarCategorias(Categoria... categorias) {
+		for (Categoria categoria : categorias) {
+			this.categorias.add(categoria);
+		}
+	}
 }
