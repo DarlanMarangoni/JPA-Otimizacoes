@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Version;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
@@ -35,6 +36,8 @@ public class Produto {
 	@Min(20)
 	private double preco;
 	
+	@Version
+	private int version;
 	
 	@Valid
 	@ManyToOne
@@ -99,6 +102,14 @@ public class Produto {
 	
 	public List<Categoria> getCategorias() {
 		return categorias;
+	}
+	
+	public void setVersion(int version) {
+		this.version = version;
+	}
+	
+	public int getVersion() {
+		return version;
 	}
 	
 	public void adicionarCategorias(Categoria... categorias) {
