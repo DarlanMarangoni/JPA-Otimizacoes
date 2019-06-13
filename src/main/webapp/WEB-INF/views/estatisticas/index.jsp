@@ -30,6 +30,14 @@
 								<! -- Conections -->
 								<td></td>
 							</tr>
+							<tr>
+								<!-- Hit -->
+								<td>${statistics.queryCacheHitCount}</td>
+								<!-- Miss -->
+								<td>${statistics.queryCacheMissCount}</td>
+								<!-- Connections -->
+								<td>${statistics.connectCount}</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
