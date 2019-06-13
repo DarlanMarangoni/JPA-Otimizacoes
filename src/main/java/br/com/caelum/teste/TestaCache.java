@@ -19,6 +19,7 @@ public class TestaCache {
 		
 		EntityManager em = emf.createEntityManager();
 		EntityManager em2 = emf.createEntityManager();
+		
 		Produto produto = em.find(Produto.class, 6);
 		Produto produto2 = em2.find(Produto.class, 6);
 		
